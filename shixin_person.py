@@ -112,14 +112,7 @@ class ZxPersonInfo:
                 else:
                     html = etree.HTML(response.text)
                     trs = html.xpath('//table/tbody/tr')
-                    # sx_list = []
-                    # bzxr_list = []
-                    # zb_list = []
-                    # xgl_list = []
-                    # all_info = {"sx": sx_list,
-                    #             "bzxr": bzxr_list,
-                    #             "zb": zb_list,
-                    #             "xgl": xgl_list}
+
 
                     for tr in trs[1:]:
                         tds = tr.xpath('.//td/text()')
