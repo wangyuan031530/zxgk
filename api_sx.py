@@ -1,6 +1,5 @@
 from flask import Flask, request, jsonify
-from shixin_person import ZxPersonInfo
-from shixin_company import ZxCompanyInfo
+from shixin_handler import ZxInfo
 import os
 
 app = Flask(__name__)
@@ -17,10 +16,10 @@ def person():
 
     if cardnum and pname:
         pname = ''
-    zxinfo = ZxPersonInfo()
+    zxinfo = ZxInfo()
     captcheid = zxinfo.get_captche_id()
 
-    info = zxinfo.get_zhixing_list(pname, cardnum, captcheid)
+    info = zxinfo.zhixing_person_list(pname, cardnum, captcheid)
     result = {'status': '0','results': info}
 
     return jsonify(result)
@@ -41,15 +40,14 @@ def company_id():
     if cardnum and pname:
         pname = ''
 
-    zxinfo = ZxCompanyInfo()
+    zxinfo = ZxInfo()
     captcheid = zxinfo.get_captche_id()
 
-    info = zxinfo.get_zhixing_list(cardnum, pname, captcheid)
+    info = zxinfo.zhixing_company_list(cardnum, pname, captcheid)
 
     result = {'status': '0', 'results': info}
 
     return jsonify(result)
-
 
 
 if __name__ == '__main__':
