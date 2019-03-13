@@ -42,7 +42,6 @@ class ZxInfo:
             print(ee)
 
             # 识别
-
         def get_file_content(filepath):
             with open(filepath, 'rb') as fp:
                 return fp.read()
@@ -132,6 +131,7 @@ class ZxInfo:
             self.zhixing_person_detail(pname, cardnum, result.get('j_captcha'), casecode_newdel, captchaid_newdel)
         else:
             info = []
+            print(response.text)
             bzxr_trs = html.xpath('//table[@id="bzxr"]/tr')
 
             if bzxr_trs:
@@ -148,11 +148,6 @@ class ZxInfo:
                     print(e)
                     card_id = ''
 
-                # try:
-                #     sexy = html.xpath('//table[@id="bzxr"]/tr[3]/td/text()')[0]
-                # except Exception as e:
-                #     print(e)
-                #     sexy = ''
                 try:
                     sexy = html.xpath('//td[@id="Detail"]/text()')[0]
                 except Exception as e:
@@ -214,7 +209,7 @@ class ZxInfo:
                     name = ''
 
                 try:
-                    sexy = html.xpath('//table[@id="zb"]/tr[3]/td/text()')[0]
+                    sexy = html.xpath('//td[@id="xmDetail"]/text()')[0]
                 except Exception as e:
                     print(e)
                     sexy = ''
@@ -250,7 +245,7 @@ class ZxInfo:
                     target = ''
 
                 try:
-                    money = html.xpath('//table[@id="zb"]/tr[9]/td/text()')[0]
+                    money = html.xpath('//td[@id="swzxbdjeDetail"]/text()')[0]
                 except Exception as e:
                     print(e)
                     money = ''
