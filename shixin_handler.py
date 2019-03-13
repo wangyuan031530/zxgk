@@ -55,19 +55,15 @@ class ZxInfo:
             if api_result['words_result'][0]:
                 code = api_result['words_result'][0]['words']
                 print(code)
-
-                result = {
+                os.remove('captcha.jpg')
+                return {
                     'j_captcha': code,
                     'captchaId': captchaid
                 }
-                print(result)
-                os.remove('captcha.jpg')
-                return result
         except Exception as e:
             print(e)
-            result = {'j_captcha': '1111',
-                      'captchaId': captchaid}
-            return result
+
+            return {'j_captcha': '1111', 'captchaId': captchaid}
 
     def zhixing_person_list(self, pname, cardnum, captchaid, current_page=1):
         result = self.recognize_image(captchaid)
