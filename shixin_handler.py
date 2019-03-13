@@ -485,7 +485,7 @@ class ZxInfo:
               "cardNumNewDel={}&j_captchaNewDel={}&caseCodeNewDel={}&captchaIdNewDel=" \
               "{}".format(pname, cardnum, j_captcha_newdel, casecode_newdel, captchaid_newdel)
         print(url)
-        response = requests.request("GET", url, headers=HEADERS)
+        response = requests.get(url, headers=HEADERS)
         html = etree.HTML(response.text)
         while "验证码错误" in response.text:
             print("验证码错误，正在重试")
