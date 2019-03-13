@@ -3,6 +3,8 @@ from shixin_handler import ZxInfo
 import os
 
 app = Flask(__name__)
+zxinfo = ZxInfo()
+captcheid = zxinfo.get_captche_id()
 
 
 @app.route('/zxgk/person')
@@ -16,8 +18,8 @@ def person():
 
     if cardnum and pname:
         pname = ''
-    zxinfo = ZxInfo()
-    captcheid = zxinfo.get_captche_id()
+
+
 
     info = zxinfo.zhixing_person_list(pname, cardnum, captcheid)
     result = {'status': '0','results': info}
@@ -26,7 +28,7 @@ def person():
 
 
 @app.route('/zxgk/company')
-def company_id():
+def company():
     if (os.path.exists("captcha.jpg")):
         os.remove("captcha.jpg")
     cardnum = request.args.get('cardnum')
@@ -39,9 +41,6 @@ def company_id():
 
     if cardnum and pname:
         pname = ''
-
-    zxinfo = ZxInfo()
-    captcheid = zxinfo.get_captche_id()
 
     info = zxinfo.zhixing_company_list(cardnum, pname, captcheid)
 
