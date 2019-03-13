@@ -132,16 +132,6 @@ class ZxCompanyInfo:
                         time.sleep(0.5)
 
             return all_info
-        # def checkyzm():
-        #     capcha_info = recognize_image()
-        #     url = "http://zxgk.court.gov.cn/zhzxgk/checkyzm"
-        #     result = {
-        #         "captchaId": capcha_info['captchaId'],
-        #         "pCode": capcha_info['j_captcha']
-        #     }
-        #     response = session.get(url, params=result, headers = HEADERS).text
-        #     while response is '1':
-        #         return
 
     def zhixing_company_detail(self, pname, cardnum, j_captcha_newdel,
                            casecode_newdel, captchaid_newdel):
@@ -150,7 +140,7 @@ class ZxCompanyInfo:
               "{}".format(pname, cardnum, j_captcha_newdel, casecode_newdel, captchaid_newdel)
         print(url)
         response = requests.request("GET", url, headers=HEADERS)
-        html = etree.HTML(response.text.encode('utf-8', 'ignore'))
+        html = etree.HTML(response.text)
         while "验证码错误" in response.text:
             print("验证码错误，正在重试")
             result = self.recognize_image(captchaid_newdel)
