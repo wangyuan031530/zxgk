@@ -9,8 +9,10 @@ captcheid = zxinfo.get_captche_id()
 
 @app.route('/zxgk/person')
 def person():
+
     if os.path.exists("captcha.jpg"):
         os.remove("captcha.jpg")
+
     cardnum = request.args.get('cardnum')
     pname = request.args.get('pname')
     if not pname:
