@@ -121,7 +121,7 @@ class ZxInfo:
                         print(name, result.get('j_captcha'), case_no, captchaid)
                         info = self.zhixing_person_detail(name, cardnum, result.get('j_captcha'), case_no, captchaid)
                         all_info.append(info)
-                        time.sleep(0.5)
+                        time.sleep(1)
 
             return all_info
 
