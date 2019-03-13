@@ -56,10 +56,7 @@ class ZxInfo:
                 code = api_result['words_result'][0]['words']
                 print(code)
                 os.remove('captcha.jpg')
-                return {
-                    'j_captcha': code,
-                    'captchaId': captchaid
-                }
+                return {'j_captcha': code, 'captchaId': captchaid}
         except Exception as e:
             print(e)
 
