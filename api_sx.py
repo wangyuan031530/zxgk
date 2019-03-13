@@ -9,7 +9,7 @@ captcheid = zxinfo.get_captche_id()
 
 @app.route('/zxgk/person')
 def person():
-    if (os.path.exists("captcha.jpg")):
+    if os.path.exists("captcha.jpg"):
         os.remove("captcha.jpg")
     cardnum = request.args.get('cardnum')
     pname = request.args.get('pname')
@@ -19,17 +19,15 @@ def person():
     if cardnum and pname:
         pname = ''
 
-
-
     info = zxinfo.zhixing_person_list(pname, cardnum, captcheid)
-    result = {'status': '0','results': info}
+    result = {'status': '0', 'results': info}
 
     return jsonify(result)
 
 
 @app.route('/zxgk/company')
 def company():
-    if (os.path.exists("captcha.jpg")):
+    if os.path.exists("captcha.jpg"):
         os.remove("captcha.jpg")
     cardnum = request.args.get('cardnum')
     pname = request.args.get('pname')
@@ -51,4 +49,3 @@ def company():
 
 if __name__ == '__main__':
     app.run()
-
